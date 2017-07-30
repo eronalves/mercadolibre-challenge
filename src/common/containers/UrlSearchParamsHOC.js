@@ -15,9 +15,7 @@ export default function(ComposedComponent) {
     }
 
     renderRedirect() {
-      
-      const route = `/items?search=${this.props.termRedirect}`;
-      console.log('render direct', route);
+      const route = `/items?search=${encodeURI(this.props.termRedirect)}`;
       return <Redirect to={route}/>;
     }
 

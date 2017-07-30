@@ -55,7 +55,7 @@ class SearchInput extends Component {
   }
 
   getOptions = () => {
-    return this.props.itemsAutoComplete ? this.props.itemsAutoComplete.results : [];
+    return this.props.itemsAutoComplete ? this.props.itemsAutoComplete : [];
   }
 
   matchStateToTerm(state, value) {
@@ -104,7 +104,7 @@ class SearchInput extends Component {
 SearchInput.propTypes = {
   onSearchAutoComplete: PropTypes.func.isRequired,
   onSearchByTerm: PropTypes.func.isRequired,
-  itemsAutoComplete: PropTypes.object
+  itemsAutoComplete: PropTypes.array
 };
 
 export default SearchInput;

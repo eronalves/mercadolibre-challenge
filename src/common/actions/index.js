@@ -7,17 +7,23 @@ import { SEARCH_TERM,
          CLEAN_SEARCH_REDIRECT,
          SEARCH_ERROR } from './types';
 
-const URL_MERCADOLIBRE = 'https://api.mercadolibre.com/';
+const URL_API = process.env.RAZZLE_URL_API;
 
-const doSearchByTerm = (term, dispatch, actionType) => {
-  axios.get(`${URL_MERCADOLIBRE}/sites/MLA/search?q=${term}`)
+const doSearchByTerm = (term, dispatch, actionType, mapPayload) => {
+  const url = `${URL_API}/items?q=${term}`;
+  axios.get(url)
     .then(response => {
+      let payload = { term, data: response.data };
+      if (mapPayload) {
+        payload = mapPayload(payload);
+      }
       dispatch({
         type: actionType,
-        payload: { term, data: response.data }
+        payload: payload
       });
     })
     .catch(error => {
+      console.log(error);
       dispatch(searchError(error.response));
     });
 };
@@ -29,7 +35,7 @@ export const searchAutocomplete = (term) => {
 
   thunk.meta = {
     debounce: {
-      time: 300,
+      time: 200,
       key: SEARCH_AUTOCOMPLETE
     }
   };
@@ -37,8 +43,17 @@ export const searchAutocomplete = (term) => {
   return thunk;
 };
 
+const mapPayloadCategories = (payload) => {
+  const categories = payload.data.categories;
+  if (categories && (categories.length > 4)) {
+    payload.data.categories = categories.slice((categories.length -4), categories.length); 
+  }
+
+  return payload;
+};
+
 export const searchByTerm = (term) => (dispatch) => {
-  doSearchByTerm(term, dispatch, SEARCH_TERM)
+  doSearchByTerm(term, dispatch, SEARCH_TERM, mapPayloadCategories)
 };
 
 export const searchRedirect = (term) => {

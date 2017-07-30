@@ -1,4 +1,7 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+
 import path from 'path';
 import React from 'react';
 import qs from 'qs';
@@ -10,14 +13,26 @@ import { Provider } from 'react-redux';
 import configureStore from '../common/store/configureStore';
 import App from '../common/containers/App';
 
+import apiRoutes from './api';
+
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 const server = express();
 
 server
+  .use(cors())
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use(bodyParser.json())
+
   .disable('x-powered-by')
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
-  .get('/*', (req, res) => {
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR)) 
+
+  // API
+  .use('/api', apiRoutes)
+
+  // REACT SSR
+  .get('/*', (req, res, next) => {
+      if (req.url.indexOf('/api') === 0) return next();
       // Compile an initial state
       const preloadedState = { };
 

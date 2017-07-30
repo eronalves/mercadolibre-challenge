@@ -1,0 +1,11 @@
+@import '../scss/variables';
+
+.breadcrumbs {
+  background-color: $background-color !important;
+  font-size: 14px;
+
+  .breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+  }
+}
+
