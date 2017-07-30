@@ -1,32 +1,45 @@
-export const SET_COUNTER = 'SET_COUNTER';
-export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
-export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+import { SEARCH_TERM, 
+         SEARCH_AUTOCOMPLETE,
+         SEARCH_ERROR } from './types';
 
-export const set = value => ({
-  type: SET_COUNTER,
-  payload: value,
-});
+const URL_MERCADOLIBRE = 'https://api.mercadolibre.com/';
 
-export const increment = () => ({
-  type: INCREMENT_COUNTER,
-});
-
-export const decrement = () => ({
-  type: DECREMENT_COUNTER,
-});
-
-export const incrementIfOdd = () => (dispatch, getState) => {
-  const { counter } = getState();
-
-  if (counter % 2 === 0) {
-    return;
-  }
-
-  dispatch(increment());
+const searchByTerm = (term, dispatch, actionType) => {
+  axios.get(`${URL_MERCADOLIBRE}/sites/MLA/search?q=${term}`)
+    .then(response => {
+      console.log(response.data);
+      dispatch({
+        type: actionType,
+        payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch(searchError(error.response));
+    });
 };
 
-export const incrementAsync = (delay = 1000) => dispatch => {
-  setTimeout(() => {
-    dispatch(increment());
-  }, delay);
+export const searchAutocomplete = (term) => {
+  const thunk = dispatch => {
+    searchByTerm(term, dispatch, SEARCH_AUTOCOMPLETE);
+  };
+
+  thunk.meta = {
+    debounce: {
+      time: 700,
+      key: SEARCH_AUTOCOMPLETE
+    }
+  };
+
+  return thunk;
 };
+
+export const searchByTerm = (term) => (dispatch) => {
+  searchByTerm(term, dispatch, SEARCH_TERM)
+};
+
+export function searchError(error) {
+  return {
+    type: SEARCH_ERROR,
+    payload: error
+  };
+}

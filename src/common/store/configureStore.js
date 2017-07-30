@@ -1,12 +1,13 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import createDebounce from 'redux-debounced';
 import rootReducer from '../reducers';
 
 const configureStore = preloadedState => {
   const store = createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(thunk)
+    applyMiddleware(createDebounce(), thunk)
   );
 
   if (module.hot) {

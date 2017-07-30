@@ -3,3 +3,19 @@
 button.btn.btn-secondary.btn-search-input {
   background-color: $background-color;
 }
+
+.Select.form-control.Select--single.is-clearable.is-searchable {
+  font-size: 18px;
+  padding: 0px;
+}
+
+.Select-control {
+  border: none;
+  border-right: none;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+span.Select-arrow-zone {
+    display: none;
+}
