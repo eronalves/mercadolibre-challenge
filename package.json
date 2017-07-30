@@ -1,0 +1,33 @@
+{
+  "name": "razzle-examples-with-redux",
+  "version": "0.7.3",
+  "license": "MIT",
+  "scripts": {
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "start-razzle": "razzle start",
+    "build-razzle": "razzle build",
+    "start": "npm-run-all -p watch-css start-razzle",
+    "build": "npm run build-css && npm run build-razzle",
+    "test": "razzle test --env=jsdom",
+    "start:prod": "NODE_ENV=production node build/server.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.0.2",
+    "prop-types": "^15.5.8",
+    "qs": "^6.4.0",
+    "razzle": "0.7.3",
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
+    "react-redux": "^5.0.4",
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "serialize-javascript": "^1.3.0"
+  },
+  "devDependencies": {
+    "razzle": "^0.7.3"
+  }
+}
