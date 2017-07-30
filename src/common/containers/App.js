@@ -13,7 +13,7 @@ const App = () =>
     <NavBarSearch />     
     <div className="has-header col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8">
       <Switch>
-        <Route exact path="/" component={Results} />
+        <Route exact path="/" component={UrlSearchParamsHOC(Results)} />
         <Route exact path="/items" component={UrlSearchParamsHOC(Results)} />
       </Switch>
     </div>
