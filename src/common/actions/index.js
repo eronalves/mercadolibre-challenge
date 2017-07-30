@@ -1,16 +1,19 @@
+import axios from 'axios';
+
 import { SEARCH_TERM, 
          SEARCH_AUTOCOMPLETE,
+         SEARCH_REDIRECT,
+         CLEAN_SEARCH_REDIRECT,
          SEARCH_ERROR } from './types';
 
 const URL_MERCADOLIBRE = 'https://api.mercadolibre.com/';
 
-const searchByTerm = (term, dispatch, actionType) => {
+const doSearchByTerm = (term, dispatch, actionType) => {
   axios.get(`${URL_MERCADOLIBRE}/sites/MLA/search?q=${term}`)
     .then(response => {
-      console.log(response.data);
       dispatch({
         type: actionType,
-        payload: response.data
+        payload: { term, data: response.data }
       });
     })
     .catch(error => {
@@ -20,12 +23,12 @@ const searchByTerm = (term, dispatch, actionType) => {
 
 export const searchAutocomplete = (term) => {
   const thunk = dispatch => {
-    searchByTerm(term, dispatch, SEARCH_AUTOCOMPLETE);
+    doSearchByTerm(term, dispatch, SEARCH_AUTOCOMPLETE);
   };
 
   thunk.meta = {
     debounce: {
-      time: 700,
+      time: 300,
       key: SEARCH_AUTOCOMPLETE
     }
   };
@@ -34,10 +37,23 @@ export const searchAutocomplete = (term) => {
 };
 
 export const searchByTerm = (term) => (dispatch) => {
-  searchByTerm(term, dispatch, SEARCH_TERM)
+  doSearchByTerm(term, dispatch, SEARCH_TERM)
 };
 
-export function searchError(error) {
+export const searchRedirect = (term) => {
+  return {
+    type: SEARCH_REDIRECT,
+    payload: { term }
+  }
+}
+
+export const cleanSearchRedirect = () => {
+  return {
+    type: CLEAN_SEARCH_REDIRECT
+  };
+}
+
+function searchError(error) {
   return {
     type: SEARCH_ERROR,
     payload: error

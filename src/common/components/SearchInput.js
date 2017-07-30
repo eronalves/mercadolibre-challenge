@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import 'react-select/dist/react-select.css'
-import 'react-virtualized/styles.css'
-import 'react-virtualized-select/styles.css'
-
-import VirtualizedSelect from 'react-virtualized-select'
+import Autocomplete from 'react-autocomplete';
 
 import './SearchInput.css';
 
 class SearchInput extends Component {
+
+  styles = {
+    item: {
+      padding: '2px 6px',
+      cursor: 'pointer'
+    },
+
+    highlightedItem: {
+      color: 'white',
+      background: 'hsl(200, 50%, 50%)',
+      padding: '2px 6px',
+      cursor: 'pointer'
+    }
+  }
 
   constructor(props) {
     super(props);
@@ -17,38 +27,67 @@ class SearchInput extends Component {
     this.state = { term: '' };
   }
 
-  onSearch(term, debounce) {
+  componentWillReceiveProps(nextProps) {
+    this.setState({ term: nextProps.term || '' });
+  }
+
+  onSearch(term) {
     this.setState({ ...this.state, term });
 
     if (term) {
-      this.props.onSearch(term, debounce);
+      this.props.onSearchByTerm(term);
     }
   }
+  onSearchByTerm() {
+    this.onSearch(this.state.term);
+  }
 
-  onClickSearch() {
-    this.onSearch(this.state.term, false);
+  onClickAutoComplete(term) {
+    this.onSearch(term);
+  }
+
+  onChangeInput(term) {
+    this.setState({ ...this.state, term });
+    this.props.onSearchAutoComplete(term);
+  }
+
+  getOptions = () => {
+    return this.props.itemsAutoComplete ? this.props.itemsAutoComplete.results : [];
+  }
+
+  matchStateToTerm(state, value) {
+    return (
+      state.title.toLowerCase().indexOf(value.toLowerCase()) !== -1
+    )
+  }
+
+  renderAutoCompleteItem(item, isHighlighted) {
+    return (
+      <div
+        style={isHighlighted ? this.styles.highlightedItem : this.styles.item}
+        key={item.id}>
+        {item.title}
+      </div>
+    );
   }
 
   render() {
-    const options = [
-      { label: "One", value: 1 },
-      { label: "Two", value: 2 },
-      { label: "Three", value: 3, disabled: true }
-      // And so on...
-    ]
-
     return (
       <div className="input-group">
-        <VirtualizedSelect
-          className="form-control"
-          options={options}
-          placeholder="Nunca dejes de buscar"
-          onChange={(selectValue) => this.onSearch(selectValue, true)}
-          value={this.state.selectValue}
-        />
+        <div className="form-control search-autocomplete">
+          <Autocomplete
+            value={this.state.term}
+            inputProps={{ id: 'states-autocomplete' }}
+            items={this.getOptions()}
+            getItemValue={(item) => item.title}
+            shouldItemRender={this.matchStateToTerm}
+            onChange={(event, term) => this.onChangeInput(term)}
+            onSelect={value => this.onClickAutoComplete(value)}
+            renderItem={(item, isHighlighted) => this.renderAutoCompleteItem(item, isHighlighted)} />
+        </div>
         <span className="input-group-btn">
           <button role="button" className="btn btn-secondary btn-search-input"
-            onClick={event => this.onClickSearch()}
+            onClick={() => this.onSearchByTerm()}
             type="button">
             <img src="assets/ic_Search.png" />
           </button>
@@ -60,7 +99,9 @@ class SearchInput extends Component {
 }
 
 SearchInput.propTypes = {
-  onSearch: PropTypes.func.isRequired
+  onSearchAutoComplete: PropTypes.func.isRequired,
+  onSearchByTerm: PropTypes.func.isRequired,
+  itemsAutoComplete: PropTypes.object
 };
 
 export default SearchInput;

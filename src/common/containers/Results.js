@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Breadcrumb from '../components/Breadcrumb';
+
+import * as actions from '../actions';
 
 class Results extends Component {
 
@@ -9,7 +12,6 @@ class Results extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="results">
         <Breadcrumb crumbs={this.breadcrumbs()}/>
@@ -19,4 +21,8 @@ class Results extends Component {
   }
 }
 
-export default Results;
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps, actions)(Results);

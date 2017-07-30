@@ -4,6 +4,25 @@ button.btn.btn-secondary.btn-search-input {
   background-color: $background-color;
 }
 
+.search-autocomplete {
+
+  input#states-autocomplete {
+    width: 100%;
+    font-size: 18px;
+    border: none;
+  }
+
+  input#states-autocomplete:focus {
+    outline-offset: 0px;
+    outline: none;
+  }
+
+  div > div {
+    margin-top: 5px;
+    left: 150px;
+  }
+}
+
 .Select.form-control.Select--single.is-clearable.is-searchable {
   font-size: 18px;
   padding: 0px;

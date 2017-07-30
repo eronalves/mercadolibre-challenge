@@ -1,4 +1,7 @@
+
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 import SearchInput from '../components/SearchInput';
 
@@ -6,8 +9,13 @@ import './NavBarSearch.css';
 
 class NavBarSearch extends Component {
 
-  onSearch(term, debounce) {
-    console.log(term, debounce);
+
+  onSearchAutoComplete(term) {
+    this.props.searchAutocomplete(term);
+  }
+
+  onSearchByTerm(term) {
+    this.props.searchRedirect(term);
   }
 
   render() {
@@ -15,11 +23,18 @@ class NavBarSearch extends Component {
       <nav className="navbar fixed-top navbar-light navbar-search">
         <div className="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8">        
           <a className="logo" href="#"><img src="assets/Logo_ML.png" /></a>
-          <SearchInput onSearch={this.onSearch.bind(this)} />
+          <SearchInput onSearchAutoComplete={this.onSearchAutoComplete.bind(this)}
+                       onSearchByTerm={this.onSearchByTerm.bind(this)}
+                       itemsAutoComplete={this.props.itemsAutoComplete} 
+                       term={this.props.term}/>
         </div>
       </nav>
     );
   }
 }
 
-export default NavBarSearch;
+function mapStateToProps({ search: { itemsAutoComplete, term } }) {
+  return { itemsAutoComplete, term };
+}
+
+export default connect(mapStateToProps, actions)(NavBarSearch);
