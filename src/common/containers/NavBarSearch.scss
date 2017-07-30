@@ -1,3 +1,25 @@
 .navbar-search {
   background-color: #FFE600;
+
+  .logo {
+    float: left;
+  }
+
+  .input-group {
+    width: 70%;
+    float: right;
+  }
+
+  @media (min-width: 400px) {
+    .input-group {
+      width: 80%;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .input-group {
+      width: 90%;
+    }
+  }
+
 }

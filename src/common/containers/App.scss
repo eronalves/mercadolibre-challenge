@@ -1,5 +1,11 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
 
+@import '../scss/variables';
+
 body {
-    background-color: white;
+    background-color: $background-color;
+}
+
+.has-header {
+    margin-top: 3.4rem;
 }
