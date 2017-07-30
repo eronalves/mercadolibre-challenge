@@ -1,12 +1,22 @@
-# Razzle and Redux Example
+# Mercado Libre Challenge
+
+Full application with Client side and server side to provide a list of products using Razzle and React for SSR (Server side rendering, to provide SEO capabilities).
+
+###Stack
+
+####Front-end
+- React.
+- React Router.
+- Redux.
+- Redux Thunk.
+- Axios.
+
+####Back-end.
+- Express.
+- Razzle.
+- Requestify.
 
 ## How to use
-Download the example [or clone the whole project](https://github.com/jaredpalmer/razzle.git):
-
-```bash
-curl https://codeload.github.com/jaredpalmer/razzle/tar.gz/master | tar -xz --strip=2 razzle-master/examples/with-redux
-cd with-redux
-```
 
 Install it and run:
 
@@ -15,5 +25,9 @@ yarn install
 yarn start
 ```
 
-## Idea behind the example
-Almost 100% of the code is taken from the [official Redux universal example](https://github.com/reactjs/redux/tree/master/examples/universal).
+To run in production mode:
+
+```bash
+yarn build
+yarn start:prod
+```
