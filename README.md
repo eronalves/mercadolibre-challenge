@@ -4,14 +4,14 @@ Full application with Client side and server side to provide a list of products 
 
 ###Stack
 
-####Front-end
+###Front-end
 - React.
 - React Router.
 - Redux.
 - Redux Thunk.
 - Axios.
 
-####Back-end.
+###Back-end.
 - Express.
 - Razzle.
 - Requestify.
