@@ -3,6 +3,7 @@ import axios from 'axios';
 import { SEARCH_TERM, 
          SEARCH_AUTOCOMPLETE,
          SEARCH_REDIRECT,
+         CLEAN_TERM,
          CLEAN_SEARCH_REDIRECT,
          SEARCH_ERROR } from './types';
 
@@ -44,7 +45,13 @@ export const searchRedirect = (term) => {
   return {
     type: SEARCH_REDIRECT,
     payload: { term }
-  }
+  };
+}
+
+export const cleanTerm = () => {
+  return {
+    type: CLEAN_TERM
+  };
 }
 
 export const cleanSearchRedirect = () => {

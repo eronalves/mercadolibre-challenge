@@ -18,6 +18,10 @@ class NavBarSearch extends Component {
     this.props.searchRedirect(term);
   }
 
+  onCleanTerm() {
+    this.props.cleanTerm();
+  }
+
   render() {
     return (
       <nav className="navbar fixed-top navbar-light navbar-search">
@@ -25,6 +29,7 @@ class NavBarSearch extends Component {
           <a className="logo" href="#"><img src="assets/Logo_ML.png" /></a>
           <SearchInput onSearchAutoComplete={this.onSearchAutoComplete.bind(this)}
                        onSearchByTerm={this.onSearchByTerm.bind(this)}
+                       onCleanTerm={this.onCleanTerm.bind(this)}
                        itemsAutoComplete={this.props.itemsAutoComplete} 
                        term={this.props.term}/>
         </div>

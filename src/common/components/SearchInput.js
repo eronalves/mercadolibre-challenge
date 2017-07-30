@@ -28,7 +28,10 @@ class SearchInput extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ term: nextProps.term || '' });
+    if (nextProps.term) {
+      this.setState({ term: nextProps.term || '' });
+      this.props.onCleanTerm();
+    }
   }
 
   onSearch(term) {
