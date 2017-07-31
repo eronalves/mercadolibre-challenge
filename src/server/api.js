@@ -24,11 +24,15 @@ apiRoutes.get('/items', (req, res) => {
 
     const data = response.getBody();
 
-    const categoriesMapped = data.available_filters
+
+    let categoriesMapped = []
+    const available_filters = data.available_filters
       .find((filter) => {
         return filter.id === 'category';
-      })
-      .values.map((category) => category.name);
+      });
+    if (available_filters) {    
+      categoriesMapped = available_filters.values.map((category) => category.name);
+    }
 
     const itemsMapped = data.results
       .map((item) => {
@@ -50,6 +54,13 @@ apiRoutes.get('/items', (req, res) => {
     const responseData = { categories: categoriesMapped, 
                            items: itemsMapped };
     res.json(responseData);
+  })
+  .catch(function(err){
+    console.log(err);
+    res.status(500).send({
+      success: false,
+      message: 'Internal server error'
+    });
   });
 });
 
@@ -83,7 +94,14 @@ apiRoutes.get('/items/:id', (req, res) => {
     };
 
     res.json(itemMapped);
-  });
+  })
+  .catch(function(err){
+    console.log(err);
+    res.status(500).send({
+      success: false,
+      message: 'Internal server error'
+    });
+  });;
 
 });
 
