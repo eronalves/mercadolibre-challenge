@@ -1,0 +1,42 @@
+.result-item-box {
+
+  .result-item {
+    cursor: pointer;
+
+    .picture {
+      padding: 16px;
+      
+      img {
+        width: 180px;
+        height: 180px;
+        border-radius: 4px;
+      }
+    }
+
+    .description {
+      padding-top: 25px;
+
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    }
+
+    .city {
+      padding-top: 30px;
+      p {
+        font-size: 12px;
+      }
+    }
+
+  }
+
+  hr {
+    background-color: white;
+    width: 95%;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}

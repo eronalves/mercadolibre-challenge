@@ -42,7 +42,8 @@ apiRoutes.get('/items', (req, res) => {
           },
           picture: item.thumbnail,
           condition: item.condition,
-          free_shipping: item.shipping.free_shipping
+          free_shipping: item.shipping.free_shipping,
+          city_name: item.address.city_name
         };
       });
 

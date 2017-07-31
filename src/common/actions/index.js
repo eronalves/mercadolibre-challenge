@@ -3,6 +3,7 @@ import axios from 'axios';
 import { SEARCH_TERM, 
          SEARCH_AUTOCOMPLETE,
          SEARCH_REDIRECT,
+         FETCH_ITEM,
          CLEAN_TERM,
          CLEAN_SEARCH_REDIRECT,
          SEARCH_ERROR } from './types';
@@ -23,7 +24,6 @@ const doSearchByTerm = (term, dispatch, actionType, mapPayload) => {
       });
     })
     .catch(error => {
-      console.log(error);
       dispatch(searchError(error.response));
     });
 };
@@ -43,17 +43,22 @@ export const searchAutocomplete = (term) => {
   return thunk;
 };
 
-const mapPayloadCategories = (payload) => {
-  const categories = payload.data.categories;
-  if (categories && (categories.length > 4)) {
-    payload.data.categories = categories.slice((categories.length -4), categories.length); 
-  }
+const sliceLastFourElements = (array) => {
+  return (array && (array.length > 4)) ?  array.slice((array.length -4), array.length) : array;
+}
 
+const sliceFirstFourElements = (array) => {
+  return (array && (array.length > 4)) ?  array.slice(0, 4) : array;
+}
+
+const mapPayloadSearch = (payload) => {
+  payload.data.categories = sliceLastFourElements(payload.data.categories);
+  payload.data.items = sliceFirstFourElements(payload.data.items);
   return payload;
 };
 
 export const searchByTerm = (term) => (dispatch) => {
-  doSearchByTerm(term, dispatch, SEARCH_TERM, mapPayloadCategories)
+  doSearchByTerm(term, dispatch, SEARCH_TERM, mapPayloadSearch)
 };
 
 export const searchRedirect = (term) => {
@@ -73,6 +78,20 @@ export const cleanSearchRedirect = () => {
   return {
     type: CLEAN_SEARCH_REDIRECT
   };
+}
+
+export const fetchItem = (id) => {
+  const url = `${URL_API}/items/${id}`;
+  axios.get(url)
+    .then(response => {
+      dispatch({
+        type: FETCH_ITEM,
+        payload: response.data
+      });
+    })
+    .catch(error => {
+      dispatch(searchError(error.response));
+    });
 }
 
 function searchError(error) {

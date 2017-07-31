@@ -1,6 +1,7 @@
 import { SEARCH_AUTOCOMPLETE,
          SEARCH_TERM,
          SEARCH_REDIRECT,
+         FETCH_ITEM,
          CLEAN_TERM,
          CLEAN_SEARCH_REDIRECT,
          SEARCH_ERROR } from '../actions/types';
@@ -18,6 +19,8 @@ const search = (state = {}, action) => {
                categories: action.payload.data.categories };
     case SEARCH_REDIRECT:
       return { ...state, termRedirect: action.payload.term };
+    case FETCH_ITEM:
+      return { ...state, item: action.payload };
     case CLEAN_TERM:
       return { ...state, term: '' };
     case CLEAN_SEARCH_REDIRECT:
