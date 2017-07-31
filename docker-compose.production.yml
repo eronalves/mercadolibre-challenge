@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+
+  mercadolibre-challenge:
+    build:
+      context: .
+      dockerfile: ./production.dockerfile
+    command: yarn build-and-start:prod
+    container_name: mercadolibre-challenge-prod
+    image: mercadolibre-challenge-prod
+    networks:
+      - dev-network
+    ports:
+      - '${RAZZLE_PORT_API}:3000'
+
+networks:
+  dev-network:
+    driver: bridge

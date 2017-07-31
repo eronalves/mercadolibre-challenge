@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+
+  mercadolibre-challenge:
+    build:
+      context: .
+    command: yarn start
+    container_name: mercadolibre-challenge
+    image: mercadolibre-challenge
+    networks:
+      - dev-network
+    ports:
+      - '3000:3000'
+      - '3001:3001'
+
+networks:
+  dev-network:
+    driver: bridge
