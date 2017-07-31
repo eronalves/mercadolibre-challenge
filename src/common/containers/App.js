@@ -6,6 +6,7 @@ import UrlSearchParamsHOC from './UrlSearchParamsHOC';
 import NavBarSearch from './NavBarSearch';
 import Breadcrumbs from './Breadcrumbs';
 import Results from './Results';
+import Details from './Details';
 
 import './App.css';
 
@@ -16,6 +17,7 @@ const App = () =>
       <Breadcrumbs />
       <Switch>
         <Route exact path="/" component={UrlSearchParamsHOC(Results)} />
+        <Route exact path="/items/:id" component={Details}/>
         <Route exact path="/items" component={UrlSearchParamsHOC(Results)} />
       </Switch>
     </div>

@@ -56,6 +56,7 @@ apiRoutes.get('/items', (req, res) => {
 apiRoutes.get('/items/:id', (req, res) => {
   var id = req.params.id;
 
+  console.log('id::', id);
   const URL_ITEM = `${URL_MERCADOLIBRE_API}items/${id}`;
   var requests = [
     requestify.get(URL_ITEM),

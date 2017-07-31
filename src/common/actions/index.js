@@ -6,6 +6,7 @@ import { SEARCH_TERM,
          FETCH_ITEM,
          CLEAN_TERM,
          CLEAN_SEARCH_REDIRECT,
+         FETCH_ERROR,
          SEARCH_ERROR } from './types';
 
 const URL_API = process.env.RAZZLE_URL_API;
@@ -80,7 +81,7 @@ export const cleanSearchRedirect = () => {
   };
 }
 
-export const fetchItem = (id) => {
+export const fetchItem = (id) => dispatch => {
   const url = `${URL_API}/items/${id}`;
   axios.get(url)
     .then(response => {
@@ -90,8 +91,16 @@ export const fetchItem = (id) => {
       });
     })
     .catch(error => {
-      dispatch(searchError(error.response));
+      console.log(error);
+      dispatch(fetchError(error.response));
     });
+}
+
+function fetchError(error) {
+  return {
+    type: FETCH_ERROR,
+    payload: error
+  };
 }
 
 function searchError(error) {

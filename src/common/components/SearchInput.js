@@ -92,7 +92,7 @@ class SearchInput extends Component {
           <button role="button" className="btn btn-secondary btn-search-input"
             onClick={() => this.onSearchByTerm()}
             type="button">
-            <img src="assets/ic_Search.png" />
+            <img src="../assets/ic_Search.png" />
           </button>
         </span>
       </div>

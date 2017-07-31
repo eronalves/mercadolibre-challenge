@@ -25,7 +25,7 @@ class NavBarSearch extends Component {
     return (
       <nav className="navbar fixed-top navbar-light navbar-search">
         <div className="col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-10 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8">        
-          <a className="logo" href="#"><img src="assets/Logo_ML.png" /></a>
+          <a className="logo" href="#"><img src="../assets/Logo_ML.png" /></a>
           <SearchInput onSearchAutoComplete={this.onSearchAutoComplete.bind(this)}
                        onSearchByTerm={this.onSearchByTerm.bind(this)}
                        onCleanTerm={this.onCleanTerm.bind(this)}

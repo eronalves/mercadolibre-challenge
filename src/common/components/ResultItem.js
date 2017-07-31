@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import './ResultItem.css';
 
@@ -16,7 +17,7 @@ const ResultItem = ({item, actions}) => {
 
   return (
     <div className="result-item-box">
-      <div key={item.id} className="result-item row"> 
+      <Link to={`items/${item.id}`} key={item.id} className="result-item row"> 
         <div className="picture col-sm-3 text-center">
           <img src={item.picture} />
         </div>
@@ -29,7 +30,7 @@ const ResultItem = ({item, actions}) => {
         <div className="city col-sm-2 text-center">
           <p>{item.city_name}</p>
         </div>        
-      </div>
+      </Link>
       <hr />
     </div>
   );

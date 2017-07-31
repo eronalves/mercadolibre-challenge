@@ -1,7 +1,9 @@
 .result-item-box {
+  
 
   .result-item {
     cursor: pointer;
+    text-decoration: none;
 
     .picture {
       padding: 16px;
@@ -17,17 +19,21 @@
       padding-top: 25px;
 
       h1 {
+        color: #333333;
         font-size: 24px;
       }
 
       p {
+        color: #666666;
         font-size: 18px;
       }
     }
 
     .city {
       padding-top: 30px;
+
       p {
+        color: #999999;
         font-size: 12px;
       }
     }
@@ -39,4 +45,9 @@
     width: 95%;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
+}
+
+.result-item-box:hover {
+  border-left: 4px solid;
+  border-left-color: #FFE600;
 }

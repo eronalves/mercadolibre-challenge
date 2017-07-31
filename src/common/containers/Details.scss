@@ -1,0 +1,71 @@
+.details {
+  margin-top: 16px;
+  background-color: white;
+
+  .header {
+    .picture {
+
+      img {
+        padding: 20px;
+        width: 100%;
+      }
+    }
+
+    .info {
+      padding-top: 32px;
+      padding-right: 32px;
+
+      p {
+        margin: 0px;
+      }
+
+      .extra-details {
+        font-size: 14px;
+      }
+
+      .title {
+        padding-top: 16px;
+        font-size: 24px;
+        font-style: bold;
+        
+      }
+
+      .price {
+        padding-top: 32px;
+        font-size: 46px;
+      }
+
+      button {
+        margin-top: 32px;
+        width: 100%;
+        font-size: 1.5rem;
+        background-color: #3483FA;
+      }
+    }
+  }
+
+  .description {
+    margin-top: 80px;
+    padding-left: 32px;
+
+    h1 {
+      font-size: 28px;
+    }
+
+    div {
+      width: 100%;
+      margin-top: 32px;
+      padding-bottom: 32px;
+      font-size: 16px;
+
+      table {
+  table-layout: fixed;
+  width: 60px; /* Important */
+}
+td {
+  width: 10px;
+}
+    }
+  }
+
+}
