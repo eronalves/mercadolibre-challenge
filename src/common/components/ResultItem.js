@@ -13,8 +13,6 @@ const ResultItem = ({item, actions}) => {
     }
   }
 
-  console.log(item);
-
   return (
     <div className="result-item-box">
       <Link to={`items/${item.id}`} key={item.id} className="result-item row"> 

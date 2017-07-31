@@ -91,7 +91,6 @@ export const fetchItem = (id) => dispatch => {
       });
     })
     .catch(error => {
-      console.log(error);
       dispatch(fetchError(error.response));
     });
 }

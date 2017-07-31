@@ -17,7 +17,7 @@ const App = () =>
       <Breadcrumbs />
       <Switch>
         <Route exact path="/" component={UrlSearchParamsHOC(Results)} />
-        <Route exact path="/items/:id" component={Details}/>
+        <Route exact path="/items/:id" component={UrlSearchParamsHOC(Details)}/>
         <Route exact path="/items" component={UrlSearchParamsHOC(Results)} />
       </Switch>
     </div>

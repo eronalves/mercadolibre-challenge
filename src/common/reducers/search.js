@@ -8,7 +8,6 @@ import { SEARCH_AUTOCOMPLETE,
 const search = (state = {}, action) => {
   switch (action.type) {
     case SEARCH_AUTOCOMPLETE:
-    console.log(action);
       return { ...state, searchError: null, itemsAutoComplete: action.payload.data.items };
     case SEARCH_TERM:
       return { ...state, 

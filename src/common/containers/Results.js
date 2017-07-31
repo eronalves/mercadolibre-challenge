@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-advanced';
 
 import * as actions from '../actions';
 
@@ -10,6 +11,10 @@ import './Results.css';
 class Results extends Component {
 
   renderList() {
+    if (!this.props.items) {
+      return (<div> </div>);
+    }
+
     return this.props.items.map((item) => {
       return <ResultItem
         key={item.id}
@@ -19,13 +24,12 @@ class Results extends Component {
   }
 
   render() {
-    if (!this.props.items) {
-      return (<p>Loading</p>);
-    }
     return (
-      <div className="results">
-        {this.renderList()}
-      </div>
+      <Loader show={!this.props.items ? true : false} message={'Carregando...'}>
+        <div className="results">
+          {this.renderList()}
+        </div>
+      </Loader>
     );
   }
 }
