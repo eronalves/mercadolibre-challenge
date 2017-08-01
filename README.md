@@ -1,6 +1,6 @@
 # Mercado Libre Challenge
 
-Full application with xlient side and server side to provide a list of products using Razzle and React for SSR (Server side rendering provide SEO capabilities).
+Full application with client side and server side to provide a list of products using Razzle and React for SSR (Server side rendering provide SEO capabilities explained [here](https://medium.com/walmartlabs/the-benefits-of-server-side-rendering-over-client-side-rendering-5d07ff2cefe8)).
 
 
 ##Stack
@@ -46,7 +46,7 @@ yarn start:prod
 
 ## Docker
 
-This application is configured to use docker compose and scripts was add on package.json to be easy to use.
+This application is configured to use docker compose for scalability purpose and scripts was add on package.json to be easy to use.
 
 **Development:**
 
@@ -71,4 +71,22 @@ If you want to change, only edit the variables for production mode:
 ```env
 RAZZLE_URL_API=http://localhost:3000/api
 RAZZLE_PORT_API=3000
+```
+
+**Docker compose commands**:
+
+If you prefer to use docker cli instead of yarn (npm) scripts then run:
+
+**Development**
+
+```bash
+docker-compose build
+docker-compose up
+```
+
+**Production**
+
+```bash
+docker-compose -f docker-compose.production.yml build
+docker-compose -f docker-compose.production.yml up
 ```
