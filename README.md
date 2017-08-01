@@ -2,7 +2,9 @@
 
 Full application with xlient side and server side to provide a list of products using Razzle and React for SSR (Server side rendering provide SEO capabilities).
 
+
 ##Stack
+
 
 **Front-end**
 
