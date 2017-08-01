@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-advanced';
 
-import * as actions from '../actions';
+import * as actions from '../../actions';
 
-import ResultItem from '../components/ResultItem';
+import ResultItem from '../../components/ResultItem';
 
 import './Details.css';
 

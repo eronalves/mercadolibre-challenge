@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 
-import SearchInput from '../components/SearchInput';
+import SearchInput from '../../components/SearchInput';
 
 import './NavBarSearch.css';
 
