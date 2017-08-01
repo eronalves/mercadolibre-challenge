@@ -10,10 +10,10 @@ services:
     container_name: mercadolibre-challenge-prod
     image: mercadolibre-challenge-prod
     networks:
-      - dev-network
+      - prod-network
     ports:
       - '${RAZZLE_PORT_API}:3000'
 
 networks:
-  dev-network:
+  prod-network:
     driver: bridge
