@@ -48,7 +48,7 @@ yarn start:prod
 
 This application is configured to use docker compose for scalability purpose and scripts was add on package.json to be easy to use.
 
-**Development:**
+**Development**
 
 ```bash
 yarn docker:build 
@@ -57,7 +57,7 @@ yarn docker:up
 *Live on http://localhost:3000.*
 
 
-**Production:**
+**Production**
 
 ```bash
 yarn docker-prod:build 
@@ -73,7 +73,7 @@ RAZZLE_URL_API=http://localhost:3000/api
 RAZZLE_PORT_API=3000
 ```
 
-**Docker compose commands**:
+**Docker compose commands**
 
 If you prefer to use docker cli instead of yarn (npm) scripts then run:
 
