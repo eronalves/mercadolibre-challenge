@@ -53,7 +53,7 @@ const sliceFirstFourElements = (array) => {
 }
 
 const mapPayloadSearch = (payload) => {
-  payload.data.categories = sliceLastFourElements(payload.data.categories);
+  payload.data.categories = sliceFirstFourElements(payload.data.categories);
   payload.data.items = sliceFirstFourElements(payload.data.items);
   return payload;
 };

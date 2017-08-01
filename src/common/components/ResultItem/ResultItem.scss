@@ -1,12 +1,13 @@
+@import '../../scss/variables';
+
 .result-item-box {
-  
 
   .result-item {
     cursor: pointer;
     text-decoration: none;
 
     .picture {
-      padding: 16px;
+      padding: $md-spacing;
       
       img {
         width: 180px;
@@ -20,12 +21,12 @@
 
       h1 {
         color: #333333;
-        font-size: 24px;
+        font-size: $lg-font-size;
       }
 
       p {
         color: #666666;
-        font-size: 18px;
+        font-size: $md-font-size;
       }
     }
 

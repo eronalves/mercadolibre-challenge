@@ -1,5 +1,7 @@
+@import '../../scss/variables';
+
 .details {
-  margin-top: 16px;
+  margin-top: $md-spacing;
   background-color: white;
 
   .header {
@@ -12,31 +14,31 @@
     }
 
     .info {
-      padding-top: 32px;
-      padding-right: 32px;
+      padding-top: $lg-spacing;
+      padding-right: $lg-spacing;
 
       p {
         margin: 0px;
       }
 
       .extra-details {
-        font-size: 14px;
+        font-size: $sm-font-size;
       }
 
       .title {
-        padding-top: 16px;
-        font-size: 24px;
+        padding-top: $md-spacing;
+        font-size: $lg-font-size;
         font-style: bold;
         
       }
 
       .price {
-        padding-top: 32px;
-        font-size: 46px;
+        padding-top: $lg-spacing;
+        font-size: $xl-font-size;
       }
 
       button {
-        margin-top: 32px;
+        margin-top: $lg-spacing;
         width: 100%;
         font-size: 1.5rem;
         background-color: #3483FA;
@@ -46,16 +48,16 @@
 
   .description {
     margin-top: 80px;
-    padding-left: 32px;
+    padding-left: $lg-spacing;
 
     h1 {
-      font-size: 28px;
+      font-size: $xs-font-size;
     }
 
     div {
       width: 100%;
-      margin-top: 32px;
-      padding-bottom: 32px;
+      margin-top: $lg-spacing;
+      padding-bottom: $lg-spacing;
       font-size: 16px;
     }
   }

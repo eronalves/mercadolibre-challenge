@@ -8,7 +8,7 @@ button.btn.btn-secondary.btn-search-input {
 
   input#states-autocomplete {
     width: 100%;
-    font-size: 18px;
+    font-size: $md-font-size;
     border: none;
   }
 
@@ -24,7 +24,7 @@ button.btn.btn-secondary.btn-search-input {
 }
 
 .Select.form-control.Select--single.is-clearable.is-searchable {
-  font-size: 18px;
+  font-size: $md-font-size;
   padding: 0px;
 }
 

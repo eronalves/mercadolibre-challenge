@@ -1,10 +1,10 @@
 @import '../../scss/variables';
 
 .breadcrumbs {
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: $md-spacing;
+  padding-bottom: $md-spacing;
   background-color: $background-color !important;
-  font-size: 14px;
+  $sm-font-size: 14px;
 
   .breadcrumb-item+.breadcrumb-item::before {
     content: ">";

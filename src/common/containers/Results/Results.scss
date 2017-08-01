@@ -1,4 +1,6 @@
+@import '../../scss/variables';
+
 .results {
-  margin-top: 16px;
+  margin-top: $md-spacing;
   background-color: white;
 }
