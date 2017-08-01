@@ -3,7 +3,7 @@
 Full application with client side and server side to provide a list of products using Razzle and React for SSR (Server side rendering provide SEO capabilities explained [here](https://medium.com/walmartlabs/the-benefits-of-server-side-rendering-over-client-side-rendering-5d07ff2cefe8)).
 
 
-##Stack
+## Stack
 
 
 **Front-end**
